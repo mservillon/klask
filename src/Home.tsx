@@ -14,17 +14,25 @@ export const Home: FC<HomeProps> = ({winningPercentageDisplay}) => {
 
     return (
         <>
-        <h3>Klask</h3>
+        <br /><br />
+        <Typography
+            fontSize={50}
+            color='#1976d2'
+        >
+            KLASK
+        </Typography>
+        <br/>
+        <br/>
         <Button
-            variant="contained"
+            variant="outlined"
             size="large"
             sx={{
-                mt: 3
-                , mb: 3
-                , pt: 3
-                , pb: 3
+                mt: 2
+                , mb: 2
+                , pt: 2
+                , pb: 2
                 , width: {
-                    xs: '100%'
+                    xs: '60%'
                     , md: 'inherit'
                 }
             }}
@@ -35,15 +43,19 @@ export const Home: FC<HomeProps> = ({winningPercentageDisplay}) => {
                 <Typography
                     fontSize={20}
                 >
-                Play Game
+                Start New Game
                 </Typography>
             </Button>
+            <br />
+            <br />
             <Grid
                 container
                 spacing={3}
+                display='flex'
+                justifyContent='center'
             >
                 <Grid
-                    xs={12}
+                    xs={10}
                     md={6}
                 >
                     <Paper
@@ -58,7 +70,7 @@ export const Home: FC<HomeProps> = ({winningPercentageDisplay}) => {
                                 , ml: 2
                                 , mt: 3
                             }}
-                            color='text.disabled'
+                            color='#1976d2'
 
                             >
                                 GENERAL
@@ -71,7 +83,7 @@ export const Home: FC<HomeProps> = ({winningPercentageDisplay}) => {
                                 >
                                 <Table
                                     sx={{
-                                        mt: 0
+                                        mt: 0,
                                     }}
                                 >
                                     <TableBody>
@@ -79,6 +91,7 @@ export const Home: FC<HomeProps> = ({winningPercentageDisplay}) => {
                                             <TableCell>
                                                 <Typography
                                                     fontSize={20}
+                                                    color='#1976d2'
                                                 >
                                                     Total Games
                                                 </Typography>
@@ -86,6 +99,7 @@ export const Home: FC<HomeProps> = ({winningPercentageDisplay}) => {
                                             <TableCell>
                                                 <Typography
                                                     fontSize={20}
+                                                    color='#1976d2'
                                                 >
                                                     {winningPercentageDisplay.totalGames}
                                                 </Typography>
@@ -101,6 +115,7 @@ export const Home: FC<HomeProps> = ({winningPercentageDisplay}) => {
                                             <TableCell>
                                                 <Typography
                                                     fontSize={20}
+                                                    color='#1976d2'
                                                 >
                                                     Winning Percentage
                                                 </Typography>
@@ -108,6 +123,7 @@ export const Home: FC<HomeProps> = ({winningPercentageDisplay}) => {
                                             <TableCell>
                                                 <Typography
                                                     fontSize={20}
+                                                    color='#1976d2'
                                                 >
                                                     {winningPercentageDisplay.winningPercentage}
                                                 </Typography>
@@ -124,6 +140,7 @@ export const Home: FC<HomeProps> = ({winningPercentageDisplay}) => {
                                             <TableCell>
                                                 <Typography
                                                     fontSize={20}
+                                                    color='#1976d2'
                                                 >
                                                     Last Played
                                                 </Typography>
@@ -131,6 +148,7 @@ export const Home: FC<HomeProps> = ({winningPercentageDisplay}) => {
                                             <TableCell>
                                                 <Typography
                                                     fontSize={20}
+                                                    color='#1976d2'
                                                 >
                                                     3d ago
                                                 </Typography>
@@ -147,6 +165,7 @@ export const Home: FC<HomeProps> = ({winningPercentageDisplay}) => {
                                             <TableCell>
                                                 <Typography
                                                     fontSize={20}
+                                                    color='#1976d2'
                                                 >
                                                     Shortest Game
                                                 </Typography>
@@ -154,6 +173,7 @@ export const Home: FC<HomeProps> = ({winningPercentageDisplay}) => {
                                             <TableCell>
                                                 <Typography
                                                     fontSize={20}
+                                                    color='#1976d2'
                                                 >
                                                     5m 42s
                                                 </Typography>
@@ -170,6 +190,7 @@ export const Home: FC<HomeProps> = ({winningPercentageDisplay}) => {
                                             <TableCell>
                                                 <Typography
                                                     fontSize={20}
+                                                    color='#1976d2'
                                                 >
                                                     Longest Game
                                                 </Typography>
@@ -177,6 +198,7 @@ export const Home: FC<HomeProps> = ({winningPercentageDisplay}) => {
                                             <TableCell>
                                                 <Typography
                                                     fontSize={20}
+                                                    color='#1976d2'
                                                 >
                                                     13m 17s
                                                 </Typography>
