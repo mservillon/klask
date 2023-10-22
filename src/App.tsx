@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import './App.css';
 
@@ -11,7 +11,9 @@ import {
   RouterProvider
 } from "react-router-dom";
 
-function App() {
+const App = () => {
+
+  const [num, setNum] = useState(1);
 
   const router = createHashRouter([
     {
@@ -20,7 +22,10 @@ function App() {
     },
     {
       path: "/setup",
-      element: <Setup />
+      element: <Setup 
+        num={num}
+        setNum={setNum}
+        />
     },
     {
       path: "/play",
