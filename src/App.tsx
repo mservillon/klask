@@ -2,6 +2,10 @@ import React from 'react';
 
 import './App.css';
 
+import { Home } from './Home';
+import { Play } from './Play';
+import { Setup } from './Setup';
+
 import {
   createHashRouter,
   RouterProvider
@@ -12,15 +16,15 @@ function App() {
   const router = createHashRouter([
     {
       path: "/",
-      element: <div>Home</div>
+      element: <Home />
     },
     {
       path: "/setup",
-      element: <div>Setup</div>
+      element: <Setup />
     },
     {
       path: "/play",
-      element: <div>Play</div>
+      element: <Play />
     },
   ]);
   return (
