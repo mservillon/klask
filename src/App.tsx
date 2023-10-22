@@ -90,8 +90,8 @@ const App = () => {
         </Box>
         <Box
           sx={{
-            pl: 3
-            , pr: 3
+            pl: 2
+            , pr: 2
             , textAlign: 'center'
           }}
         >

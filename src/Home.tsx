@@ -2,7 +2,7 @@ import Button from '@mui/material/Button';
 import { useNavigate } from 'react-router-dom';
 import { WinningPercentageDisplay } from './game-results';
 import { FC } from 'react';
-import { Typography, Paper, Table, TableBody, TableRow, TableCell } from '@mui/material';
+import { Typography, Paper, Table, TableBody, TableRow, TableCell, Box } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2';
 interface HomeProps {
     winningPercentageDisplay: WinningPercentageDisplay
@@ -59,46 +59,63 @@ export const Home: FC<HomeProps> = ({winningPercentageDisplay}) => {
                                 , mt: 3
                             }}
                             color='text.disabled'
-                            gutterBottom
+
                             >
                                 GENERAL
                             </Typography>
-                            <Table>
-                                <TableBody>
-                                    <TableRow>
-                                        <TableCell>
-                                            <Typography
-                                                fontSize={20}
-                                            >
-                                                Total Games
-                                            </Typography>
-                                        </TableCell>
-                                        <TableCell>
-                                            <Typography
-                                                fontSize={20}
-                                            >
-                                                {winningPercentageDisplay.totalGames}
-                                            </Typography>
-                                        </TableCell>
-                                    </TableRow>
-                                    <TableRow>
-                                        <TableCell>
-                                            <Typography
-                                                fontSize={20}
-                                            >
-                                                Winning Percentage
-                                            </Typography>
-                                        </TableCell>
-                                        <TableCell>
-                                            <Typography
-                                                fontSize={20}
-                                            >
-                                                {winningPercentageDisplay.winningPercentage}
-                                            </Typography>
-                                        </TableCell>
-                                    </TableRow>
-                                </TableBody>
-                            </Table>
+                            <Box
+                                sx={{
+                                    pl: 1
+                                    , pr: 1
+                                }}
+                                >
+                                <Table
+                                    sx={{
+                                        mt: 0
+                                    }}
+                                >
+                                    <TableBody>
+                                        <TableRow>
+                                            <TableCell>
+                                                <Typography
+                                                    fontSize={20}
+                                                >
+                                                    Total Games
+                                                </Typography>
+                                            </TableCell>
+                                            <TableCell>
+                                                <Typography
+                                                    fontSize={20}
+                                                >
+                                                    {winningPercentageDisplay.totalGames}
+                                                </Typography>
+                                            </TableCell>
+                                        </TableRow>
+                                        <TableRow
+                                            sx={{
+                                                '&:last-child td, &:last-child th': {
+                                                    border: 0
+                                                }
+                                            }}
+                                        >
+                                            <TableCell>
+                                                <Typography
+                                                    fontSize={20}
+                                                >
+                                                    Winning Percentage
+                                                </Typography>
+                                            </TableCell>
+                                            <TableCell>
+                                                <Typography
+                                                    fontSize={20}
+                                                >
+                                                    {winningPercentageDisplay.winningPercentage}
+                                                </Typography>
+                                            </TableCell>
+                                        </TableRow>
+                                    </TableBody>
+                                </Table>
+                            </Box>
                         </Paper>
                 </Grid>
             </Grid>
