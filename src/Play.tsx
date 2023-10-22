@@ -1,9 +1,20 @@
 import Button from '@mui/material/Button';
 import { useNavigate } from 'react-router-dom';
+import { GameResult } from './game-results';
+import { FC } from 'react';
 
-export const Play = () => {
+interface PlayProps {
+    addNewGameResult: (r: GameResult) => void;
+};
+
+export const Play: FC<PlayProps> = ({addNewGameResult}) => {
 
     const navigate = useNavigate();
+
+    const gameOver = (won: boolean) => {
+        addNewGameResult(won);
+        navigate(-2)
+    }
     
     return (
         <>
@@ -14,10 +25,19 @@ export const Play = () => {
             variant="outlined"
             size="large"
             onClick={
-                () => navigate(-2)
+                () => gameOver(true)
             }
             >
-                Finished
+                I won
+            </Button>
+            <Button
+            variant="outlined"
+            size="large"
+            onClick={
+                () => gameOver(false)
+            }
+            >
+                I lost
             </Button>
         </>
     );
