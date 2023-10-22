@@ -112,6 +112,75 @@ export const Home: FC<HomeProps> = ({winningPercentageDisplay}) => {
                                                     {winningPercentageDisplay.winningPercentage}
                                                 </Typography>
                                             </TableCell>
+                                            
+                                        </TableRow>
+                                        <TableRow
+                                            sx={{
+                                                '&:last-child td, &:last-child th': {
+                                                    border: 0
+                                                }
+                                            }}
+                                        >
+                                            <TableCell>
+                                                <Typography
+                                                    fontSize={20}
+                                                >
+                                                    Last Played
+                                                </Typography>
+                                            </TableCell>
+                                            <TableCell>
+                                                <Typography
+                                                    fontSize={20}
+                                                >
+                                                    3d ago
+                                                </Typography>
+                                            </TableCell>
+                                            
+                                        </TableRow>
+                                        <TableRow
+                                            sx={{
+                                                '&:last-child td, &:last-child th': {
+                                                    border: 0
+                                                }
+                                            }}
+                                        >
+                                            <TableCell>
+                                                <Typography
+                                                    fontSize={20}
+                                                >
+                                                    Shortest Game
+                                                </Typography>
+                                            </TableCell>
+                                            <TableCell>
+                                                <Typography
+                                                    fontSize={20}
+                                                >
+                                                    5m 42s
+                                                </Typography>
+                                            </TableCell>
+                                            
+                                        </TableRow>
+                                        <TableRow
+                                            sx={{
+                                                '&:last-child td, &:last-child th': {
+                                                    border: 0
+                                                }
+                                            }}
+                                        >
+                                            <TableCell>
+                                                <Typography
+                                                    fontSize={20}
+                                                >
+                                                    Longest Game
+                                                </Typography>
+                                            </TableCell>
+                                            <TableCell>
+                                                <Typography
+                                                    fontSize={20}
+                                                >
+                                                    13m 17s
+                                                </Typography>
+                                            </TableCell>            
                                         </TableRow>
                                     </TableBody>
                                 </Table>
