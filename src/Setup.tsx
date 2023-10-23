@@ -1,21 +1,27 @@
 import Button from '@mui/material/Button';
 import { FC, useState } from 'react';
 import { useNavigate } from "react-router-dom";
+import { Box } from '@mui/material';
 
 interface SetupProps {
     num: number;
     setNum: any;
+    setTitle: (t: string) => void;
 }
 
-export const Setup: FC<SetupProps> = ({num, setNum}) => {
+export const Setup: FC<SetupProps> = ({
+    num
+    , setNum
+    , setTitle
+    }) => {
     
+        setTitle("Game Setup")
     const navigate = useNavigate();
 
     return (
-        <>
-            <h3>
-                Setup Game ({num});
-            </h3>
+        <Box
+            sx={{ mt: 2 }}
+        >
             <Button
                 variant="outlined"
                 size="large"
@@ -28,6 +34,6 @@ export const Setup: FC<SetupProps> = ({num, setNum}) => {
             >
                 Start Game
             </Button>
-        </>
+        </Box>
     );
 }

@@ -31,6 +31,8 @@ const App = () => {
 
   const [num, setNum] = useState(1);
   const [gameResults, setGameResults] = useState<GameResult[]>(dummyGameResults);
+  const [title, setTitle] = useState<string>("Klask Companion App")
+
 
   const addNewGameResult = (newGameResult: GameResult) => setGameResults([
 
@@ -44,6 +46,7 @@ const App = () => {
       element: <Home 
         winningPercentageDisplay = {getWinningPercentageDisplay(gameResults)}
         generalGameTimeFacts={ getGeneralGameTimeFacts(gameResults, Date.now())}
+        setTitle={setTitle}
         />
     },
     {
@@ -51,12 +54,14 @@ const App = () => {
       element: <Setup 
         num={num}
         setNum={setNum}
+        setTitle={setTitle}
         />
     },
     {
       path: "/play",
       element: <Play 
         addNewGameResult={addNewGameResult}
+        setTitle={setTitle}
       />
     },
   ]);
@@ -75,6 +80,7 @@ const App = () => {
           }}
           >
           <Toolbar>
+            {/*
             <TableBarOutlined
               color={"primary"}
               sx={{
@@ -83,6 +89,7 @@ const App = () => {
                 , opacity: 0.5
               }}
               />
+            */}
               <Typography
                 variant='h6'
                 color='primary'
@@ -90,7 +97,7 @@ const App = () => {
                   opacity: 0.75
                 }}
               >
-                Klask Companion App
+                {title}
               </Typography>
             </Toolbar>
           </AppBar>

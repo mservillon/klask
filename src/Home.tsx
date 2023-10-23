@@ -5,17 +5,22 @@ import { FC } from 'react';
 import { Typography, Paper, Table, TableBody, TableRow, TableCell, Box } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2';
 
+export const appTitle = "Klask Companion App";
+
 interface HomeProps {
     winningPercentageDisplay: WinningPercentageDisplay
     generalGameTimeFacts: GeneralGameTimeFactsDisplay
+    setTitle: (t: string) => void;
 }
 
 export const Home: FC<HomeProps> = ({
     
     winningPercentageDisplay
     , generalGameTimeFacts
+    , setTitle
     }) => {
     
+    setTitle(appTitle)
     const navigate = useNavigate();
 
     return (
@@ -216,13 +221,16 @@ export const Home: FC<HomeProps> = ({
                         </Paper>
                 </Grid>
             </Grid>
-
+            <br />
+            <br />
+{/*
             <h4>
                 {`Total: ${winningPercentageDisplay.totalGames}`}
             </h4>
             <h4>
                 {`Winning Percentage: ${winningPercentageDisplay.winningPercentage}`}
             </h4>
+                                        */}
         </>
     );
 };
