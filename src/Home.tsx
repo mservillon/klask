@@ -1,14 +1,20 @@
 import Button from '@mui/material/Button';
 import { useNavigate } from 'react-router-dom';
-import { WinningPercentageDisplay } from './game-results';
+import { GeneralGameTimeFactsDisplay, WinningPercentageDisplay } from './game-results';
 import { FC } from 'react';
 import { Typography, Paper, Table, TableBody, TableRow, TableCell, Box } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2';
+
 interface HomeProps {
     winningPercentageDisplay: WinningPercentageDisplay
+    generalGameTimeFacts: GeneralGameTimeFactsDisplay
 }
 
-export const Home: FC<HomeProps> = ({winningPercentageDisplay}) => {
+export const Home: FC<HomeProps> = ({
+    
+    winningPercentageDisplay
+    , generalGameTimeFacts
+    }) => {
     
     const navigate = useNavigate();
 
@@ -150,7 +156,7 @@ export const Home: FC<HomeProps> = ({winningPercentageDisplay}) => {
                                                     fontSize={20}
                                                     color='#1976d2'
                                                 >
-                                                    3d ago
+                                                    {generalGameTimeFacts.lastPlayed} ago
                                                 </Typography>
                                             </TableCell>
                                             
@@ -175,7 +181,7 @@ export const Home: FC<HomeProps> = ({winningPercentageDisplay}) => {
                                                     fontSize={20}
                                                     color='#1976d2'
                                                 >
-                                                    5m 42s
+                                                    {generalGameTimeFacts.shortestGame}
                                                 </Typography>
                                             </TableCell>
                                             
@@ -200,7 +206,7 @@ export const Home: FC<HomeProps> = ({winningPercentageDisplay}) => {
                                                     fontSize={20}
                                                     color='#1976d2'
                                                 >
-                                                    13m 17s
+                                                    {generalGameTimeFacts.longestGame}
                                                 </Typography>
                                             </TableCell>            
                                         </TableRow>

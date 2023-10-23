@@ -18,7 +18,7 @@ export interface GeneralGameTimeFactsDisplay {
     longestGame: string;
 };
 
-const getGeneralGameTimeFacts = (
+export const getGeneralGameTimeFacts = (
     results: GameResult[]
     , fromDateMilliseconds: number
 ): GeneralGameTimeFactsDisplay => {
@@ -30,7 +30,7 @@ const getGeneralGameTimeFacts = (
 
     const gameDurationsInMilliseconds = results
         .filter(x => Date.parse(x.end) <= fromDateMilliseconds)
-        .map(x => Date.parse(x.start))
+        .map(x => Date.parse(x.end) - Date.parse(x.start))
     ;
 
     return {
