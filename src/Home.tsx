@@ -57,6 +57,29 @@ export const Home: FC<HomeProps> = ({
                 Start New Game
                 </Typography>
             </Button>
+            <Button
+            variant="outlined"
+            size="large"
+            sx={{
+                mt: 2
+                , mb: 2
+                , pt: 2
+                , pb: 2
+                , width: {
+                    xs: '60%'
+                    , md: 'inherit'
+                }
+            }}
+            onClick={
+                () => navigate('stats')
+            }
+            >
+                <Typography
+                    fontSize={20}
+                >
+                Stats
+                </Typography>
+            </Button>
             <br />
             <br />
             <Grid

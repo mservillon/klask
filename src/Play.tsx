@@ -25,7 +25,7 @@ export const Play: FC<PlayProps> = ({
             , start: startTimestamp
             , end: new Date().toISOString()
         });
-        navigate(-2)
+        navigate('/stats');
     }
     
     return (

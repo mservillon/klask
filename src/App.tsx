@@ -8,11 +8,13 @@ import { Setup } from './Setup';
 import { GameResult, getWinningPercentageDisplay, getGeneralGameTimeFacts } from './game-results';
 import { AppBar, Box, Toolbar, Typography } from '@mui/material';
 import { TableBarOutlined } from '@mui/icons-material';
+import { Stats } from './Stats';
 
 import {
   createHashRouter,
   RouterProvider
 } from "react-router-dom";
+
 
 const dummyGameResults: GameResult[] = [
     {
@@ -61,6 +63,14 @@ const App = () => {
       path: "/play",
       element: <Play 
         addNewGameResult={addNewGameResult}
+        setTitle={setTitle}
+      />
+    },
+    {
+      path: "/stats",
+      element: <Stats 
+      winningPercentageDisplay = {getWinningPercentageDisplay(gameResults)}
+      generalGameTimeFacts={ getGeneralGameTimeFacts(gameResults, Date.now())}
         setTitle={setTitle}
       />
     },
