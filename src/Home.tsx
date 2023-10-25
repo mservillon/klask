@@ -57,193 +57,35 @@ export const Home: FC<HomeProps> = ({
                 Start New Game
                 </Typography>
             </Button>
-            <Button
-            variant="outlined"
-            size="large"
-            sx={{
-                mt: 2
-                , mb: 2
-                , pt: 2
-                , pb: 2
-                , width: {
-                    xs: '60%'
-                    , md: 'inherit'
+            <Box
+                sx={{
+                    mt: 1
+                }}
+            >
+                <Button
+                variant="outlined"
+                size="large"
+                sx={{
+                    mt: 2
+                    , mb: 2
+                    , pt: 2
+                    , pb: 2
+                    , width: {
+                        xs: '60%'
+                        , md: 'inherit'
+                    }
+                }}
+                onClick={
+                    () => navigate('stats')
                 }
-            }}
-            onClick={
-                () => navigate('stats')
-            }
-            >
-                <Typography
-                    fontSize={20}
                 >
-                Stats
-                </Typography>
-            </Button>
-            <br />
-            <br />
-            <Grid
-                container
-                spacing={3}
-                display='flex'
-                justifyContent='center'
-            >
-                <Grid
-                    xs={10}
-                    md={6}
-                >
-                    <Paper
-                        elevation={3}
-                        sx={{
-                            overflow: 'hidden'
-                        }}
+                    <Typography
+                        fontSize={20}
                     >
-                        <Typography
-                            sx={{
-                                fontSize: 20
-                                , ml: 2
-                                , mt: 3
-                            }}
-                            color='#1976d2'
-
-                            >
-                                GENERAL
-                            </Typography>
-                            <Box
-                                sx={{
-                                    pl: 1
-                                    , pr: 1
-                                }}
-                                >
-                                <Table
-                                    sx={{
-                                        mt: 0,
-                                    }}
-                                >
-                                    <TableBody>
-                                        <TableRow>
-                                            <TableCell>
-                                                <Typography
-                                                    fontSize={20}
-                                                    color='#1976d2'
-                                                >
-                                                    Total Games
-                                                </Typography>
-                                            </TableCell>
-                                            <TableCell>
-                                                <Typography
-                                                    fontSize={20}
-                                                    color='#1976d2'
-                                                >
-                                                    {winningPercentageDisplay.totalGames}
-                                                </Typography>
-                                            </TableCell>
-                                        </TableRow>
-                                        <TableRow
-                                            sx={{
-                                                '&:last-child td, &:last-child th': {
-                                                    border: 0
-                                                }
-                                            }}
-                                        >
-                                            <TableCell>
-                                                <Typography
-                                                    fontSize={20}
-                                                    color='#1976d2'
-                                                >
-                                                    Winning Percentage
-                                                </Typography>
-                                            </TableCell>
-                                            <TableCell>
-                                                <Typography
-                                                    fontSize={20}
-                                                    color='#1976d2'
-                                                >
-                                                    {winningPercentageDisplay.winningPercentage}
-                                                </Typography>
-                                            </TableCell>
-                                            
-                                        </TableRow>
-                                        <TableRow
-                                            sx={{
-                                                '&:last-child td, &:last-child th': {
-                                                    border: 0
-                                                }
-                                            }}
-                                        >
-                                            <TableCell>
-                                                <Typography
-                                                    fontSize={20}
-                                                    color='#1976d2'
-                                                >
-                                                    Last Played
-                                                </Typography>
-                                            </TableCell>
-                                            <TableCell>
-                                                <Typography
-                                                    fontSize={20}
-                                                    color='#1976d2'
-                                                >
-                                                    {generalGameTimeFacts.lastPlayed} ago
-                                                </Typography>
-                                            </TableCell>
-                                            
-                                        </TableRow>
-                                        <TableRow
-                                            sx={{
-                                                '&:last-child td, &:last-child th': {
-                                                    border: 0
-                                                }
-                                            }}
-                                        >
-                                            <TableCell>
-                                                <Typography
-                                                    fontSize={20}
-                                                    color='#1976d2'
-                                                >
-                                                    Shortest Game
-                                                </Typography>
-                                            </TableCell>
-                                            <TableCell>
-                                                <Typography
-                                                    fontSize={20}
-                                                    color='#1976d2'
-                                                >
-                                                    {generalGameTimeFacts.shortestGame}
-                                                </Typography>
-                                            </TableCell>
-                                            
-                                        </TableRow>
-                                        <TableRow
-                                            sx={{
-                                                '&:last-child td, &:last-child th': {
-                                                    border: 0
-                                                }
-                                            }}
-                                        >
-                                            <TableCell>
-                                                <Typography
-                                                    fontSize={20}
-                                                    color='#1976d2'
-                                                >
-                                                    Longest Game
-                                                </Typography>
-                                            </TableCell>
-                                            <TableCell>
-                                                <Typography
-                                                    fontSize={20}
-                                                    color='#1976d2'
-                                                >
-                                                    {generalGameTimeFacts.longestGame}
-                                                </Typography>
-                                            </TableCell>            
-                                        </TableRow>
-                                    </TableBody>
-                                </Table>
-                            </Box>
-                        </Paper>
-                </Grid>
-            </Grid>
+                    Klask Stats
+                    </Typography>
+                </Button>
+            </Box>
             <br />
             <br />
 {/*

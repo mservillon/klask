@@ -26,6 +26,14 @@ export const Stats: FC<StatsProps> = ({
 
     return (
         <>
+        <Box
+
+            sx={{
+                mt: 8
+            }}
+        >
+
+        
             <Grid
                 container
                 spacing={3}
@@ -188,8 +196,37 @@ export const Stats: FC<StatsProps> = ({
                         </Paper>
                 </Grid>
             </Grid>
-            <br />
-            <br />
+        </Box>
+        <Box
+
+        sx={{
+            mt: 2
+        }}
+        >
+            <Button
+            variant="outlined"
+            size="large"
+            sx={{
+                mt: 2
+                , mb: 2
+                , pt: 2
+                , pb: 2
+                , width: {
+                    xs: '60%'
+                    , md: 'inherit'
+                }
+            }}
+            onClick={
+                () => navigate('/')
+            }
+            >
+                <Typography
+                    fontSize={20}
+                >
+                Back to Home
+                </Typography>
+            </Button>
+        </Box>
 {/*
             <h4>
                 {`Total: ${winningPercentageDisplay.totalGames}`}
