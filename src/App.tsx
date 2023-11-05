@@ -5,7 +5,7 @@ import './App.css';
 import { Home } from './Home';
 import { Play } from './Play';
 import { Setup } from './Setup';
-import { GameResult, getWinningPercentageDisplay, getGeneralGameTimeFacts } from './game-results';
+import { GameResult, getWinningPercentageDisplay, getGeneralGameTimeFacts, getLeaderboardData } from './game-results';
 import { AppBar, Box, Toolbar, Typography } from '@mui/material';
 import { TableBarOutlined } from '@mui/icons-material';
 import { Stats } from './Stats';
@@ -92,6 +92,7 @@ const App = () => {
       path: "/stats",
       element: <Stats 
       winningPercentageDisplay = {getWinningPercentageDisplay(gameResults)}
+      leaderboard={getLeaderboardData(gameResults)}
       generalGameTimeFacts={ getGeneralGameTimeFacts(gameResults, Date.now())}
         setTitle={setTitle}
       />

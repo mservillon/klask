@@ -1,8 +1,8 @@
 import Button from '@mui/material/Button';
 import { useNavigate } from 'react-router-dom';
-import { GeneralGameTimeFactsDisplay, WinningPercentageDisplay } from './game-results';
+import { GeneralGameTimeFactsDisplay, WinningPercentageDisplay, LeaderboardEntry } from './game-results';
 import { FC } from 'react';
-import { Typography, Paper, Table, TableBody, TableRow, TableCell, Box } from '@mui/material';
+import { Typography, Paper, Table, TableBody, TableRow, TableCell, Box, TableHead } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2';
 import { GameResult } from './game-results';
 
@@ -10,6 +10,7 @@ export const appTitle = "Klask Companion App";
 
 interface StatsProps {
     winningPercentageDisplay: WinningPercentageDisplay
+    leaderboard: LeaderboardEntry[]
     generalGameTimeFacts: GeneralGameTimeFactsDisplay
     setTitle: (t: string) => void;
 }
@@ -18,6 +19,7 @@ export const Stats: FC<StatsProps> = ({
     
     winningPercentageDisplay
     , generalGameTimeFacts
+    , leaderboard
     , setTitle
     }) => {
     
@@ -195,9 +197,69 @@ export const Stats: FC<StatsProps> = ({
                             </Box>
                         </Paper>
                 </Grid>
+
+                <Grid
+                    xs={10}
+                    md={6}
+                >
+                    <Paper
+                        elevation={3}
+                        sx={{
+                            overflow: 'hidden'
+                        }}
+                    >
+                        <Typography
+                            sx={{
+                                fontSize: 20
+                                , ml: 2
+                                , mt: 3
+                            }}
+                            color='#1976d2'
+
+                            >
+                                LEADERBOARD
+                            </Typography>
+                            <Box
+                                sx={{
+                                    pl: 1
+                                    , pr: 1
+                                }}
+                                >
+                                <Table
+                                    sx={{
+                                        mt: 0,
+                                    }}
+                                >
+                                    <TableHead>
+                                        <TableRow>
+                                            <TableCell>PLAYER</TableCell>
+                                            <TableCell>W</TableCell>
+                                            <TableCell>L</TableCell>
+                                            <TableCell>AVG</TableCell>
+                                        </TableRow>
+                                    </TableHead>
+                                    <TableBody>
+                                        {
+                                            leaderboard.map(x => (
+                                                <TableRow>
+                                                    <TableCell>{x.name}</TableCell>
+                                                    <TableCell>{x.wins}</TableCell>
+                                                    <TableCell>{x.losses}</TableCell>
+                                                    <TableCell>{x.avg.toFixed(3)}</TableCell>
+                                                </TableRow>
+                                            ))
+                                        }
+                                    </TableBody>
+                                </Table>
+                            </Box>
+                        </Paper>
+                </Grid>
+
             </Grid>
         </Box>
         <Box
+
+
 
         sx={{
             mt: 2

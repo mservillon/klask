@@ -21,7 +21,7 @@ export interface GeneralGameTimeFactsDisplay {
     longestGame: string;
 };
 
-interface LeaderboardEntry {
+export interface LeaderboardEntry {
     wins: number;
     losses: number;
     avg: number;

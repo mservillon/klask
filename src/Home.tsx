@@ -1,6 +1,6 @@
 import Button from '@mui/material/Button';
 import { useNavigate } from 'react-router-dom';
-import { GeneralGameTimeFactsDisplay, WinningPercentageDisplay } from './game-results';
+import { GeneralGameTimeFactsDisplay, WinningPercentageDisplay, LeaderboardEntry } from './game-results';
 import { FC } from 'react';
 import { Typography, Paper, Table, TableBody, TableRow, TableCell, Box } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2';
