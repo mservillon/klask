@@ -17,13 +17,35 @@ import {
 
 
 const dummyGameResults: GameResult[] = [
-    {
-      won: true
+  {
+      //won: true
+      winner: "Tom"
+      ,players: ["Tom", "taylor"]
+
       , start: "2023-10-01T17:40:46.333Z"
       , end: "2023-10-01T17:53:27.123Z"
   }
   , {
-      won: false
+      winner: "Troy"
+      , players: ["Troy", "Jonah", "Sheldon", "Tom"]
+      , start: "2023-10-09T17:55:46.333Z"
+      , end: "2023-10-09T18:00:27.123Z"
+  }
+  , {
+      winner: "Troy"
+      , players: ["Troy", "Mack"]
+      , start: "2023-10-09T17:55:46.333Z"
+      , end: "2023-10-09T18:00:27.123Z"
+  }
+  , {
+      winner: "Mack"
+      , players: ["Troy", "Mack"]
+      , start: "2023-10-09T17:55:46.333Z"
+      , end: "2023-10-09T18:00:27.123Z"
+  }
+  , {
+      winner: "Mack"
+      , players: ["Troy", "Mack"]
       , start: "2023-10-09T17:55:46.333Z"
       , end: "2023-10-09T18:00:27.123Z"
   }
