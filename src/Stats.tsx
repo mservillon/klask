@@ -105,31 +105,6 @@ export const Stats: FC<StatsProps> = ({
                                                     fontSize={20}
                                                     color='#1976d2'
                                                 >
-                                                    Winning Percentage
-                                                </Typography>
-                                            </TableCell>
-                                            <TableCell>
-                                                <Typography
-                                                    fontSize={20}
-                                                    color='#1976d2'
-                                                >
-                                                    {winningPercentageDisplay.winningPercentage}
-                                                </Typography>
-                                            </TableCell>
-                                            
-                                        </TableRow>
-                                        <TableRow
-                                            sx={{
-                                                '&:last-child td, &:last-child th': {
-                                                    border: 0
-                                                }
-                                            }}
-                                        >
-                                            <TableCell>
-                                                <Typography
-                                                    fontSize={20}
-                                                    color='#1976d2'
-                                                >
                                                     Last Played
                                                 </Typography>
                                             </TableCell>
