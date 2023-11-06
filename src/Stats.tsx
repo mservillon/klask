@@ -216,7 +216,9 @@ export const Stats: FC<StatsProps> = ({
                                     <TableBody>
                                         {
                                             leaderboard.map(x => (
-                                                <TableRow>
+                                                <TableRow
+                                                    key={x.name}
+                                                >
                                                     <TableCell>{x.name}</TableCell>
                                                     <TableCell>{x.wins}</TableCell>
                                                     <TableCell>{x.losses}</TableCell>
