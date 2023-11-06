@@ -1,7 +1,7 @@
 import Button from '@mui/material/Button';
 import { FC, useState } from 'react';
 import { useNavigate } from "react-router-dom";
-import { Box } from '@mui/material';
+import { Box, Checkbox, FormControlLabel } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2';
 
 interface SetupProps {
@@ -54,7 +54,9 @@ export const Setup: FC<SetupProps> = ({
                             md={4}
                             lg={2}
                         >
-                            {x}
+                            <FormControlLabel 
+                                control={   
+                                    <Checkbox />} label={x} />
                         </Grid>
                     ))
                 }
