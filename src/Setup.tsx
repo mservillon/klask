@@ -1,7 +1,7 @@
 import Button from '@mui/material/Button';
 import { FC, useState } from 'react';
 import { useNavigate } from "react-router-dom";
-import { Box, Checkbox, FormControlLabel } from '@mui/material';
+import { Alert, Box, Checkbox, FormControlLabel, Snackbar } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2';
 
 interface SetupProps {
@@ -23,23 +23,62 @@ export const Setup: FC<SetupProps> = ({
             name: x
             , checked: true
         })));
-    
-        setTitle("Game Setup")
+
+        const [showWarning, setShowWarning] = useState(false)
+
+        setTitle("Choose players then start the game")
+
+        const atLeastTwoPlayersChecked = availablePlayers
+            .filter(x => x.checked)
+            .length == 2
+        ;
+
     const navigate = useNavigate();
 
     return (
         <Box
             sx={{ mt: 2 }}
         >
+
+            <Snackbar
+                anchorOrigin={{ 
+                    vertical: "top"
+                    , horizontal: "center" 
+                }} 
+                open={showWarning} 
+                autoHideDuration={3000} 
+                onClose={
+                    () => setShowWarning(false)
+                    }
+                >
+                <Alert 
+                    severity="warning" 
+                    sx={{ 
+                        width: '100%' 
+                    }}>
+                    Choose at least two players
+                </Alert>
+            </Snackbar>
             <Button
-                variant="outlined"
+                variant={atLeastTwoPlayersChecked ? "contained" : "outlined"}
                 size="large"
                 onClick={
-                    () => { 
+                    () => {
+                        
+                        if (!atLeastTwoPlayersChecked) {
+                            setShowWarning(true);
+                            return;
+                        }
                         navigate('/play')
                         setNum(num + 1);
                 }
             }
+            sx={{
+                pt: 3
+                , pb: 3
+                , width: '100%'
+                , md: 'inherit'
+            }}
             >
                 Start Game
             </Button>
