@@ -7,11 +7,14 @@ import { Box } from '@mui/material';
 interface PlayProps {
     addNewGameResult: (r: GameResult) => void;
     setTitle: (t: string) => void;
+    chosenPlayers: string[];
 };
 
 export const Play: FC<PlayProps> = ({
     addNewGameResult
-    , setTitle }) => {
+    , setTitle
+    , chosenPlayers
+}) => {
 
     setTitle("Play Klask")
 
@@ -19,10 +22,11 @@ export const Play: FC<PlayProps> = ({
 
     const [startTimestamp, _] = useState(new Date().toISOString());
 
-    const gameOver = (won: boolean) => {
+    const gameOver = (winner: string) => {
         addNewGameResult({
-            winner: "Mack"
-            , players: ["Mack", "Tack", "Rack"]
+            
+            winner: winner
+            , players: chosenPlayers
             , start: startTimestamp
             , end: new Date().toISOString()
         });
@@ -33,25 +37,20 @@ export const Play: FC<PlayProps> = ({
         <Box
             sx={{ mt: 2 }}
         >
-        
-        <Button
-            variant="outlined"
-            size="large"
-            onClick={
-                () => gameOver(true)
+            {
+                chosenPlayers.map(x => (
+                    <Button
+                        key={x}
+                        variant="outlined"
+                        size="large"
+                        onClick={
+                            () => gameOver(x)
+                         }
+                    >
+                        {x} Won
+                    </Button>
+                ))
             }
-            >
-                I won
-            </Button>
-            <Button
-            variant="outlined"
-            size="large"
-            onClick={
-                () => gameOver(false)
-            }
-            >
-                I lost
-            </Button>
         </Box>
     );
 }

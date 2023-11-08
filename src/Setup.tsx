@@ -9,6 +9,7 @@ interface SetupProps {
     setNum: any;
     setTitle: (t: string) => void;
     previousPlayers: string[];
+    setChosenPlayers: (players: string[]) => void;
 }
 
 export const Setup: FC<SetupProps> = ({
@@ -16,6 +17,8 @@ export const Setup: FC<SetupProps> = ({
     , setNum
     , setTitle
     , previousPlayers
+    , setChosenPlayers
+
     }) => {
 
         const [availablePlayers, setAvailablePlayers] = 
@@ -97,6 +100,11 @@ export const Setup: FC<SetupProps> = ({
                         }
                         navigate('/play')
                         setNum(num + 1);
+                        setChosenPlayers(
+                            availablePlayers
+                                .filter(x => x.checked)
+                                .map(x => x.name)
+                        );
                 }
             }
             sx={{
