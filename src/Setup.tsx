@@ -38,6 +38,13 @@ export const Setup: FC<SetupProps> = ({
         const validateAddNewPlayer = () => {
             // Validate here
 
+            if (
+                newPlayerName.length == 0
+                || availablePlayers.some(x => x.name.toUpperCase() == newPlayerName.toLocaleLowerCase())
+            ) {
+                return;
+            }
+
             setAvailablePlayers(
                 [
                     ...availablePlayers
@@ -121,7 +128,7 @@ export const Setup: FC<SetupProps> = ({
                     }
                 />
                 <Button
-                    variant='contained'
+                    variant={newPlayerName.length == 0 ? "outlined" : "contained"}
                     onClick={
                         validateAddNewPlayer 
                     }
