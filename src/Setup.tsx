@@ -94,6 +94,7 @@ export const Setup: FC<SetupProps> = ({
                 {
                     availablePlayers.map(x => (
                         <Grid
+                            key={x.name}
                             xs={12}
                             sm={6}
                             md={4}
