@@ -1,7 +1,7 @@
 import Button from '@mui/material/Button';
 import { FC, useState } from 'react';
 import { useNavigate } from "react-router-dom";
-import { Alert, Box, Checkbox, FormControlLabel, Snackbar } from '@mui/material';
+import { Alert, Box, Checkbox, FormControlLabel, Snackbar, TextField } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2';
 
 interface SetupProps {
@@ -26,6 +26,8 @@ export const Setup: FC<SetupProps> = ({
 
         const [showWarning, setShowWarning] = useState(false)
 
+        const [newPlayerName, setNewPlayerName] = useState("")
+
         setTitle("Choose players then start the game")
 
         const atLeastTwoPlayersChecked = availablePlayers
@@ -33,6 +35,23 @@ export const Setup: FC<SetupProps> = ({
             .length == 2
         ;
 
+        const validateAddNewPlayer = () => {
+            // Validate here
+
+            setAvailablePlayers(
+                [
+                    ...availablePlayers
+                    , {
+                        name: newPlayerName
+                        , checked: true
+                    }
+                ].sort(
+                    (a, b) => a.name.localeCompare(b.name)
+                )
+            );
+
+            setNewPlayerName("");
+        }
     const navigate = useNavigate();
 
     return (
@@ -82,6 +101,34 @@ export const Setup: FC<SetupProps> = ({
             >
                 Start Game
             </Button>
+
+            <Box
+                sx={{
+                    mt: 2
+                    , display: "flex"
+                    , flexDirection: "row"
+                    , gap: 2
+                    // , maxWidth: "900px"
+                }}
+            >
+                <TextField
+                    label="Enter new player name"
+                    variant="outlined"
+                    fullWidth
+                    value={newPlayerName}
+                    onChange={
+                        (e) => setNewPlayerName(e.target.value)
+                    }
+                />
+                <Button
+                    variant='contained'
+                    onClick={
+                        validateAddNewPlayer 
+                    }
+                >
+                    Add
+                </Button>
+            </Box>
 
             <Grid
                 container
