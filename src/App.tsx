@@ -6,8 +6,8 @@ import { Home } from './Home';
 import { Play } from './Play';
 import { Setup } from './Setup';
 import { GameResult, getWinningPercentageDisplay, getGeneralGameTimeFacts, getLeaderboardData, getPreviousPlayers } from './game-results';
-import { AppBar, Box, Toolbar, Typography } from '@mui/material';
-import { TableBarOutlined } from '@mui/icons-material';
+import { AppBar, Box, Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, IconButton, TextField, Toolbar, Typography, useMediaQuery, useTheme } from '@mui/material';
+import { SettingsOutlined, TableBarOutlined } from '@mui/icons-material';
 import { Stats } from './Stats';
 
 import {
@@ -15,7 +15,9 @@ import {
   RouterProvider
 } from "react-router-dom";
 
+import localforage from 'localforage';
 
+/*
 const dummyGameResults: GameResult[] = [
   {
       //won: true
@@ -50,13 +52,20 @@ const dummyGameResults: GameResult[] = [
       , end: "2023-10-09T18:00:27.123Z"
   }
 ];
+*/
 
 const App = () => {
 
   const [num, setNum] = useState(1);
-  const [gameResults, setGameResults] = useState<GameResult[]>(dummyGameResults);
+  const [gameResults, setGameResults] = useState<GameResult[]>([]);
   const [title, setTitle] = useState<string>("Klask Companion App")
   const [chosenPlayers, setChosenPlayers] = useState<string[]>([]);
+
+  const [settingsOpen, setSettingsOpen] = React.useState(false);
+  const theme = useTheme();
+  const fullScreen = useMediaQuery(theme.breakpoints.down('md'));
+
+  const [emailAddress, setEmailAddress] = React.useState("")
 
 
   const addNewGameResult = (newGameResult: GameResult) => setGameResults([
@@ -132,10 +141,20 @@ const App = () => {
                 color='primary'
                 sx={{
                   opacity: 0.75
+                  , flexGrow: 1
+                  , textAlign: 'left'
                 }}
               >
                 {title}
               </Typography>
+              <IconButton
+                size='small'
+                onClick={
+                  () => setSettingsOpen(true)
+                }
+              >
+                <SettingsOutlined />
+              </IconButton>
             </Toolbar>
           </AppBar>
         </Box>
@@ -148,6 +167,48 @@ const App = () => {
         >
           <RouterProvider router={router} />
         </Box>
+
+        <Dialog
+        fullScreen={fullScreen}
+        open={settingsOpen}
+        onClose={
+          () => setSettingsOpen(false)
+        }
+      >
+        <DialogTitle>
+          Settings
+        </DialogTitle>
+        <DialogContent>
+          <DialogContentText>
+            Your email address will be used to save/load results
+            <TextField
+                label="Enter your email NOW!!!!!"
+                variant="outlined"
+                fullWidth
+                value={emailAddress}
+                onChange={
+                    (e) => setEmailAddress(e.target.value)
+                }
+                sx={{
+                  mt: 3
+                }}
+            />
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button 
+            variant={emailAddress.length > 0 ? 'contained' : 'outlined'}
+            autoFocus
+            onClick={
+            async() => {
+              await localforage.setItem('email', emailAddress);
+              setSettingsOpen(false)
+            }
+          }>
+            Save
+          </Button>
+        </DialogActions>
+      </Dialog>
     </div>
   );
 }
