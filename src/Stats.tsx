@@ -113,7 +113,11 @@ export const Stats: FC<StatsProps> = ({
                                                     fontSize={20}
                                                     color='#1976d2'
                                                 >
-                                                    {generalGameTimeFacts.lastPlayed} ago
+                                                {
+                                                    winningPercentageDisplay.totalGames > 0
+                                                    ? `${generalGameTimeFacts.lastPlayed} ago`
+                                                    : ''
+                                                }                   
                                                 </Typography>
                                             </TableCell>
                                             

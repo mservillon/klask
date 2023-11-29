@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import './App.css';
 
@@ -67,6 +67,31 @@ const App = () => {
 
   const [emailAddress, setEmailAddress] = React.useState("")
 
+  useEffect(
+    () => {
+
+      const loadEmail = async() => {
+        if (!ignore) {
+          setEmailAddress(
+            await localforage.getItem<string>('email') ?? ""
+          )
+        }
+      };
+
+      let ignore = false;
+      loadEmail();
+
+      return(
+        // return a cleanup func
+        () => {
+          ignore = true;
+        }
+      )
+
+
+    }
+    , []
+  )
 
   const addNewGameResult = (newGameResult: GameResult) => setGameResults([
 
