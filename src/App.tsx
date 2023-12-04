@@ -16,7 +16,7 @@ import {
 } from "react-router-dom";
 
 import localforage from 'localforage';
-import { saveGameToCloud } from './tca-cloud-api';
+import { loadGamesFromCloud, saveGameToCloud } from './tca-cloud-api';
 
 /*
 const dummyGameResults: GameResult[] = [
@@ -67,6 +67,7 @@ const App = () => {
   const fullScreen = useMediaQuery(theme.breakpoints.down('md'));
 
   const [emailAddress, setEmailAddress] = React.useState("")
+  const [emailAddressUpdatedCount, setEmailAddressUpdatedCount] = React.useState(0)
 
   useEffect(
     () => {
@@ -78,7 +79,14 @@ const App = () => {
 
           // If we have an email, load results from the cloud
           if (email.length > 0) {
-          setEmailAddress(email)
+            setEmailAddress(email)
+
+            const cloudGameResults = await loadGamesFromCloud(
+              email
+              , 'tca-klask-fall-2023'
+            );
+
+            setGameResults(cloudGameResults);
           }
         }
       };
@@ -95,7 +103,7 @@ const App = () => {
 
 
     }
-    , []
+    , [emailAddressUpdatedCount]
   )
 
   const addNewGameResult = async (newGameResult: GameResult) => {
@@ -245,6 +253,7 @@ const App = () => {
             onClick={
             async() => {
               await localforage.setItem('email', emailAddress);
+              setEmailAddressUpdatedCount(emailAddressUpdatedCount + 1);
               setSettingsOpen(false)
             }
           }>
