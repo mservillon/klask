@@ -71,16 +71,20 @@ const App = () => {
   useEffect(
     () => {
 
-      const loadEmail = async() => {
+      const init = async() => {
         if (!ignore) {
-          setEmailAddress(
-            await localforage.getItem<string>('email') ?? ""
-          )
+
+          const email = await localforage.getItem<string>('email') ?? ""
+
+          // If we have an email, load results from the cloud
+          if (email.length > 0) {
+          setEmailAddress(email)
+          }
         }
       };
 
       let ignore = false;
-      loadEmail();
+      init();
 
       return(
         // return a cleanup func
