@@ -2,7 +2,11 @@ import Button from '@mui/material/Button';
 import { useNavigate } from 'react-router-dom';
 import { GameResult } from './game-results';
 import { FC, useState } from 'react';
-import { Box } from '@mui/material';
+import { Box, Input, TextField, styled } from '@mui/material';
+import AddIcon from "@mui/icons-material/Add";
+import RemoveIcon from "@mui/icons-material/Remove";
+import ButtonGroup from '@mui/material/ButtonGroup';
+import { blueGrey } from '@mui/material/colors';
 
 interface PlayProps {
     addNewGameResult: (r: GameResult) => void;
@@ -21,7 +25,12 @@ export const Play: FC<PlayProps> = ({
     const navigate = useNavigate();
 
     const [startTimestamp, _] = useState(new Date().toISOString());
+    const [countOne, setCountOne] = useState(0);
+    const [countTwo, setCountTwo] = useState(0);
 
+    const inputNumber = (e: any) => {
+        setCountOne(Math.max(Number(e.target.value), 1))
+    }
     const gameOver = (winner: string) => {
         addNewGameResult({
             
@@ -32,12 +41,172 @@ export const Play: FC<PlayProps> = ({
         });
         navigate('/stats');
     }
-    
+
+    console.log(chosenPlayers)
+
+    const scoreLimit = 6;
+
     return (
+        <>
+            <h1>KLAAAAAAAAAAAAAAAASK</h1>
+        
+        {/* <Box
+            sx={{
+                display: 'flex',
+                flexDirection: 'row',
+                justifyContent: 'space-evenly'
+            }}
+        >
+            <h2 style={{ marginRight: "3em" }}>Mack</h2>
+            <h2>Mineral</h2>
+        </Box> */}
+        <Box
+        sx={{ 
+            mb: 5, 
+            display: 'flex',
+            flexDirection: 'row',
+            justifyContent: 'space-evenly'
+            }}
+        >
+            <div>
+                <h2>{chosenPlayers[0]}</h2>
+                <ButtonGroup>
+                    <Button
+                    onClick={() => setCountOne((countOne) => countOne - 1)}
+                    disabled={countOne == 0}
+                    >
+                        <RemoveIcon />
+                    </Button>
+                        <TextField style={{ fontSize: 13, width: 60, textAlign: "center" }} onChange={inputNumber} value={countOne} inputProps={{ readOnly: true }} />
+                    <Button
+                    onClick={() => setCountOne((countOne) => countOne + 1)} disabled={countOne == 6}
+                    >
+                        <AddIcon />
+                    </Button>
+                </ButtonGroup>
+            </div>
+            <div>
+                <h2>{chosenPlayers[1]}</h2>
+                <ButtonGroup>
+                    <Button
+                    onClick={() => setCountTwo((countTwo) => countTwo - 1)}
+                    disabled={countTwo == 0}
+                    >
+                        <RemoveIcon />
+                    </Button>
+                    <TextField style={{ fontSize: 13, width: 60, textAlign: "center" }} onChange={inputNumber} value={countTwo} inputProps={{ readOnly: true }} />
+                    <Button
+                    onClick={() => setCountTwo((countTwo) => countTwo + 1)}
+                    disabled={countTwo == 6}
+                    >
+                        <AddIcon />
+                    </Button>
+                </ButtonGroup>
+            </div>
+        </Box>
+        <Box
+        sx={{ 
+            mb: 5, 
+            display: 'flex',
+            flexDirection: 'row',
+            justifyContent: 'space-evenly'
+            }}
+        >
+            <Box
+                sx={{ 
+                mb: 5, 
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'space-evenly'
+                }}
+            >
+                <div>
+                    <Button onClick={() => setCountOne((countOne) => countOne + 1)}>
+                                    KLASK
+                    </Button>
+                    <Button onClick={() => setCountOne((countOne) => countOne + 1)}>
+                                    LOST CONTROL
+                    </Button>
+                    <Button onClick={() => setCountTwo((countTwo) => countTwo + 1)}>
+                                    2 MAGNETS
+                    </Button>
+                </div>
+            </Box>
+                <div>
+                <Button onClick={() => setCountTwo((countTwo) => countTwo + 3)}>
+                                    KLASK
+                    </Button>
+                    <Button onClick={() => setCountTwo((countTwo) => countTwo + 1)}>
+                                    LOST CONTROL
+                    </Button>
+                    <Button onClick={() => setCountTwo((countTwo) => countTwo + 1)}>
+                                    2 MAGNETS
+                    </Button>
+                </div>
+        </Box>
+
+            <Button
+                variant={countOne >= scoreLimit ? 'contained' : 'outlined'}
+                onClick={
+                    () => gameOver(chosenPlayers[0])}
+            >
+                {chosenPlayers[0]} won
+            </Button>
+            <Button
+                variant={countTwo >= scoreLimit ? 'contained' : 'outlined'}
+                onClick={
+                    () => gameOver(chosenPlayers[1])}
+            >
+                {chosenPlayers[1]} won
+            </Button>
+            
+            {/* {
+                chosenPlayers.map(x => (
+                    <Button
+                        key={x}
+                        variant={countOne == scoreLimit || countTwo == scoreLimit ? 'contained' : 'outlined'}
+                        size="large"
+                        onClick={
+                            () => gameOver(x)
+                         }
+                    >
+                        {x} Won
+                    </Button>
+                ))
+            } */}
+            {/* {
+            chosenPlayers.map(players => (
+                <h2>{players[1]}</h2>
+            ))
+            }
+            {
+            chosenPlayers.map(players => (
+                <h2>{players[0]}</h2>
+            ))
+            } */}
+        </>
+        /*
         <Box
             sx={{ mt: 2 }}
         >
             {
+                chosenPlayers.map(players => (
+                    <ButtonGroup>
+                        <Button
+                        onClick={() => setCount((count) => count - 1)}
+                        >
+                            <RemoveIcon />
+                        </Button>
+                        <Input onChange={inputNumber} value={count} />
+                        <Button
+                        onClick={() => setCount((count) => count + 1)}
+                        >
+                            <AddIcon />
+                        </Button>
+                    </ButtonGroup>
+                ))
+            }
+                {
                 chosenPlayers.map(x => (
                     <Button
                         key={x}
@@ -52,5 +221,6 @@ export const Play: FC<PlayProps> = ({
                 ))
             }
         </Box>
+    */
     );
 }
