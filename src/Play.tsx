@@ -42,6 +42,18 @@ export const Play: FC<PlayProps> = ({
         navigate('/stats');
     }
 
+    const hiddenMessage = () => {
+        return <h1>I know you'd like to end in a tie but only one winner!!!</h1>
+    }
+
+    const whoWon = () => {
+        if (countOne == 6) {
+            return <h1>{chosenPlayers[0]} won!!!!</h1>
+        } else if (countTwo == 6) {
+            return <h1>{chosenPlayers[1]} won!!!!</h1>
+        }
+    }
+
     console.log(chosenPlayers)
 
     const scoreLimit = 6;
@@ -160,6 +172,8 @@ export const Play: FC<PlayProps> = ({
                 {chosenPlayers[1]} won
             </Button>
             
+            <h2>{countOne == 6 && countTwo == 6 ? hiddenMessage() : ""}</h2>
+            <h2>{countOne == 6 && countTwo == 6 ? "" : whoWon()}</h2>
             {/* {
                 chosenPlayers.map(x => (
                     <Button
