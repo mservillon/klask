@@ -161,6 +161,7 @@ export const Play: FC<PlayProps> = ({
                 variant={countOne >= scoreLimit ? 'contained' : 'outlined'}
                 onClick={
                     () => gameOver(chosenPlayers[0])}
+                    disabled={countOne < 6}
             >
                 {chosenPlayers[0]} won
             </Button>
@@ -168,6 +169,7 @@ export const Play: FC<PlayProps> = ({
                 variant={countTwo >= scoreLimit ? 'contained' : 'outlined'}
                 onClick={
                     () => gameOver(chosenPlayers[1])}
+                disabled={countTwo < 6}
             >
                 {chosenPlayers[1]} won
             </Button>
