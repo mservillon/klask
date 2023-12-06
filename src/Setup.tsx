@@ -38,6 +38,15 @@ export const Setup: FC<SetupProps> = ({
             .length == 2
         ;
 
+        /*
+        const scoreLimit = (e: any) => {
+            if (e.target.value > 6 || e.target.value < 6) {
+                const newLimit = scoreLimit(Number(e.target.value));
+            }
+        }
+        */
+
+
         const validateAddNewPlayer = () => {
             // Validate here
 
@@ -88,34 +97,6 @@ export const Setup: FC<SetupProps> = ({
                     Choose at least two players
                 </Alert>
             </Snackbar>
-            <Button
-                variant={atLeastTwoPlayersChecked ? "contained" : "outlined"}
-                size="large"
-                onClick={
-                    () => {
-                        
-                        if (!atLeastTwoPlayersChecked) {
-                            setShowWarning(true);
-                            return;
-                        }
-                        navigate('/play')
-                        setNum(num + 1);
-                        setChosenPlayers(
-                            availablePlayers
-                                .filter(x => x.checked)
-                                .map(x => x.name)
-                        );
-                }
-            }
-            sx={{
-                pt: 3
-                , pb: 3
-                , width: '100%'
-                , md: 'inherit'
-            }}
-            >
-                Start Game
-            </Button>
 
             <Box
                 sx={{
@@ -184,6 +165,36 @@ export const Setup: FC<SetupProps> = ({
                     ))
                 }
             </Grid>
+            <Button
+                variant={atLeastTwoPlayersChecked ? "contained" : "outlined"}
+                size="large"
+                onClick={
+                    () => {
+                        
+                        if (!atLeastTwoPlayersChecked) {
+                            setShowWarning(true);
+                            return;
+                        }
+                        navigate('/play')
+                        setNum(num + 1);
+                        setChosenPlayers(
+                            availablePlayers
+                                .filter(x => x.checked)
+                                .map(x => x.name)
+                        );
+                }
+            }
+            sx={{
+                pt: 3
+                , pb: 3
+                , width: '100%'
+                , md: 'inherit'
+            }}
+            >
+                Start Game
+            </Button>
         </Box>
+        
     );
+    
 }

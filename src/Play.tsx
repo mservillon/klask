@@ -56,7 +56,7 @@ export const Play: FC<PlayProps> = ({
 
     console.log(chosenPlayers)
 
-    const scoreLimit = 6;
+    const score = 6;
 
     return (
         <>
@@ -109,7 +109,7 @@ export const Play: FC<PlayProps> = ({
                     <TextField style={{ fontSize: 13, width: 60, textAlign: "center" }} onChange={inputNumber} value={countTwo} inputProps={{ readOnly: true }} />
                     <Button
                     onClick={() => setCountTwo((countTwo) => countTwo + 1)}
-                    disabled={countTwo == 6}
+                    disabled={countTwo == score}
                     >
                         <AddIcon />
                     </Button>
@@ -133,32 +133,44 @@ export const Play: FC<PlayProps> = ({
                 }}
             >
                 <div>
-                    <Button onClick={() => setCountOne((countOne) => countOne + 1)}>
+                    <Button
+                        disabled={countOne == score || countTwo == score} 
+                        onClick={() => setCountOne((countOne) => countOne + 1)}>
                                     KLASK
                     </Button>
-                    <Button onClick={() => setCountOne((countOne) => countOne + 1)}>
+                    <Button
+                        disabled={countOne == score || countTwo == score} 
+                        onClick={() => setCountOne((countOne) => countOne + 1)}>
                                     LOST CONTROL
                     </Button>
-                    <Button onClick={() => setCountTwo((countTwo) => countTwo + 1)}>
-                                    2 MAGNETS
+                    <Button
+                        disabled={countOne == score || countTwo == score} 
+                        onClick={() => setCountTwo((countTwo) => countTwo + 1)}>
+                                    MAGNETS
                     </Button>
                 </div>
             </Box>
                 <div>
-                <Button onClick={() => setCountTwo((countTwo) => countTwo + 3)}>
+                <Button
+                    disabled={countOne == score || countTwo == score}
+                    onClick={() => setCountTwo((countTwo) => countTwo + 1)}>
                                     KLASK
                     </Button>
-                    <Button onClick={() => setCountTwo((countTwo) => countTwo + 1)}>
+                    <Button 
+                        disabled={countOne == score || countTwo == score}
+                        onClick={() => setCountTwo((countTwo) => countTwo + 1)}>
                                     LOST CONTROL
                     </Button>
-                    <Button onClick={() => setCountTwo((countTwo) => countTwo + 1)}>
-                                    2 MAGNETS
+                    <Button
+                        disabled={countOne == score || countTwo == score} 
+                        onClick={() => setCountTwo((countTwo) => countTwo + 1)}>
+                                    MAGNETS
                     </Button>
                 </div>
         </Box>
 
             <Button
-                variant={countOne >= scoreLimit ? 'contained' : 'outlined'}
+                variant={countOne >= score ? 'contained' : 'outlined'}
                 onClick={
                     () => gameOver(chosenPlayers[0])}
                     disabled={countOne < 6}
@@ -166,7 +178,7 @@ export const Play: FC<PlayProps> = ({
                 {chosenPlayers[0]} won
             </Button>
             <Button
-                variant={countTwo >= scoreLimit ? 'contained' : 'outlined'}
+                variant={countTwo >= score ? 'contained' : 'outlined'}
                 onClick={
                     () => gameOver(chosenPlayers[1])}
                 disabled={countTwo < 6}
@@ -176,6 +188,7 @@ export const Play: FC<PlayProps> = ({
             
             <h2>{countOne == 6 && countTwo == 6 ? hiddenMessage() : ""}</h2>
             <h2>{countOne == 6 && countTwo == 6 ? "" : whoWon()}</h2>
+
             {/* {
                 chosenPlayers.map(x => (
                     <Button
