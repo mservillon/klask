@@ -136,7 +136,7 @@ export const Play: FC<PlayProps> = ({
                     <Button
                         disabled={countOne == score || countTwo == score} 
                         onClick={() => setCountOne((countOne) => countOne + 1)}>
-                                    KLASK
+                                    KLASK (OWN GOAL)
                     </Button>
                     <Button
                         disabled={countOne == score || countTwo == score} 
@@ -145,8 +145,8 @@ export const Play: FC<PlayProps> = ({
                     </Button>
                     <Button
                         disabled={countOne == score || countTwo == score} 
-                        onClick={() => setCountTwo((countTwo) => countTwo + 1)}>
-                                    MAGNETS
+                        onClick={() => setCountTwo((countOne) => countOne + 1)}>
+                                    MAGNET POINTS
                     </Button>
                 </div>
             </Box>
@@ -154,7 +154,7 @@ export const Play: FC<PlayProps> = ({
                 <Button
                     disabled={countOne == score || countTwo == score}
                     onClick={() => setCountTwo((countTwo) => countTwo + 1)}>
-                                    KLASK
+                                    KLASK (OWN GOAL)
                     </Button>
                     <Button 
                         disabled={countOne == score || countTwo == score}
@@ -164,7 +164,7 @@ export const Play: FC<PlayProps> = ({
                     <Button
                         disabled={countOne == score || countTwo == score} 
                         onClick={() => setCountTwo((countTwo) => countTwo + 1)}>
-                                    MAGNETS
+                                    MAGNET POINTS
                     </Button>
                 </div>
         </Box>

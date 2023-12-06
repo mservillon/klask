@@ -193,8 +193,8 @@ export const Setup: FC<SetupProps> = ({
             >
                 Start Game
             </Button>
+            
         </Box>
-        
     );
     
 }
