@@ -35,7 +35,7 @@ export const Home: FC<HomeProps> = ({
         <br/>
         <br/>
         <Button
-            variant="outlined"
+            variant="contained"
             size="large"
             sx={{
                 mt: 2
@@ -63,7 +63,7 @@ export const Home: FC<HomeProps> = ({
                 }}
             >
                 <Button
-                variant="outlined"
+                variant="contained"
                 size="large"
                 sx={{
                     mt: 2

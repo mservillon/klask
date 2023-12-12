@@ -12,12 +12,14 @@ interface PlayProps {
     addNewGameResult: (r: GameResult) => void;
     setTitle: (t: string) => void;
     chosenPlayers: string[];
+    gameTarget: number;
 };
 
 export const Play: FC<PlayProps> = ({
     addNewGameResult
     , setTitle
     , chosenPlayers
+    , gameTarget
 }) => {
 
     setTitle("Play Klask")
@@ -43,20 +45,20 @@ export const Play: FC<PlayProps> = ({
     }
 
     const hiddenMessage = () => {
-        return <h1>I know you'd like to end in a tie but only one winner!!!</h1>
+        return <h1>I know you'd like to end in a tie but you can only have one winner!!!</h1>
     }
 
     const whoWon = () => {
-        if (countOne == 6) {
+        if (countOne == gameTarget) {
             return <h1>{chosenPlayers[0]} won!!!!</h1>
-        } else if (countTwo == 6) {
+        } else if (countTwo == gameTarget) {
             return <h1>{chosenPlayers[1]} won!!!!</h1>
         }
     }
 
     console.log(chosenPlayers)
 
-    const score = 6;
+    const score = gameTarget;
 
     return (
         <>
@@ -91,7 +93,7 @@ export const Play: FC<PlayProps> = ({
                     </Button>
                         <TextField style={{ fontSize: 13, width: 60, textAlign: "center" }} onChange={inputNumber} value={countOne} inputProps={{ readOnly: true }} />
                     <Button
-                    onClick={() => setCountOne((countOne) => countOne + 1)} disabled={countOne == 6}
+                    onClick={() => setCountOne((countOne) => countOne + 1)} disabled={countOne == score}
                     >
                         <AddIcon />
                     </Button>
@@ -173,7 +175,7 @@ export const Play: FC<PlayProps> = ({
                 variant={countOne >= score ? 'contained' : 'outlined'}
                 onClick={
                     () => gameOver(chosenPlayers[0])}
-                    disabled={countOne < 6}
+                    disabled={countOne < score}
             >
                 {chosenPlayers[0]} won
             </Button>
@@ -181,13 +183,13 @@ export const Play: FC<PlayProps> = ({
                 variant={countTwo >= score ? 'contained' : 'outlined'}
                 onClick={
                     () => gameOver(chosenPlayers[1])}
-                disabled={countTwo < 6}
+                disabled={countTwo < score}
             >
                 {chosenPlayers[1]} won
             </Button>
             
-            <h2>{countOne == 6 && countTwo == 6 ? hiddenMessage() : ""}</h2>
-            <h2>{countOne == 6 && countTwo == 6 ? "" : whoWon()}</h2>
+            <h2>{countOne == score && countTwo == score ? hiddenMessage() : ""}</h2>
+            <h2>{countOne == score && countTwo == score ? "" : whoWon()}</h2>
 
             {/* {
                 chosenPlayers.map(x => (

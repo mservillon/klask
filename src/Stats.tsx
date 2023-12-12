@@ -247,7 +247,7 @@ export const Stats: FC<StatsProps> = ({
         }}
         >
             <Button
-            variant="outlined"
+            variant="contained"
             size="large"
             sx={{
                 mt: 2

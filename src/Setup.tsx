@@ -1,8 +1,10 @@
 import Button from '@mui/material/Button';
 import { FC, useState } from 'react';
 import { useNavigate } from "react-router-dom";
-import { Alert, Box, Checkbox, FormControlLabel, Snackbar, TextField } from '@mui/material';
+import { Alert, Box, Checkbox, FormControlLabel, Slider, Snackbar, TextField } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2';
+import { Unstable_NumberInput as NumberInput } from '@mui/base/Unstable_NumberInput';
+
 
 interface SetupProps {
     num: number;
@@ -10,6 +12,8 @@ interface SetupProps {
     setTitle: (t: string) => void;
     previousPlayers: string[];
     setChosenPlayers: (players: string[]) => void;
+    setGameTarget: (t: number) => void;
+    gameTarget: number;
 }
 
 export const Setup: FC<SetupProps> = ({
@@ -18,20 +22,22 @@ export const Setup: FC<SetupProps> = ({
     , setTitle
     , previousPlayers
     , setChosenPlayers
+    , setGameTarget
+    , gameTarget
 
     }) => {
 
         const [availablePlayers, setAvailablePlayers] = 
         useState(previousPlayers.map(x => ({
             name: x
-            , checked: true
+            , checked: false
         })));
 
         const [showWarning, setShowWarning] = useState(false)
 
         const [newPlayerName, setNewPlayerName] = useState("")
 
-        setTitle("Choose players then start the game")
+        setTitle("Choose two players then start the game")
 
         const atLeastTwoPlayersChecked = availablePlayers
             .filter(x => x.checked)
@@ -107,6 +113,17 @@ export const Setup: FC<SetupProps> = ({
                     // , maxWidth: "900px"
                 }}
             >
+                <Slider
+                    value={gameTarget}
+                    onChange={(event, val) => setGameTarget(val as number)}
+                    min={1}
+                    max={100}
+                    step={1}
+                    marks
+                / >
+                    <span>
+                        {gameTarget}
+                    </span>
                 <TextField
                     label="Enter new player name"
                     variant="outlined"

@@ -68,6 +68,7 @@ const App = () => {
 
   const [emailAddress, setEmailAddress] = React.useState("")
   const [emailAddressUpdatedCount, setEmailAddressUpdatedCount] = React.useState(0)
+  const [gameTarget, setGameTarget] = useState<number>(6);
 
   useEffect(
     () => {
@@ -142,6 +143,8 @@ const App = () => {
         setTitle={setTitle}
         previousPlayers={getPreviousPlayers(gameResults)}
         setChosenPlayers={setChosenPlayers}
+        setGameTarget={setGameTarget}
+        gameTarget={gameTarget}
         />
     },
     {
@@ -150,6 +153,8 @@ const App = () => {
         addNewGameResult={addNewGameResult}
         setTitle={setTitle}
         chosenPlayers={chosenPlayers}
+        gameTarget={gameTarget}
+
       />
     },
     {
