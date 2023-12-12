@@ -30,7 +30,7 @@ export const Home: FC<HomeProps> = ({
             fontSize={50}
             color='#1976d2'
         >
-            KLASK
+            <img style={{ width: '30%' }} src='https://www.firstcomicsnews.com/wp-content/uploads/2017/11/KLASK-logo.png' />
         </Typography>
         <br/>
         <br/>
@@ -87,6 +87,7 @@ export const Home: FC<HomeProps> = ({
                 </Button>
             </Box>
             <br />
+            <img src='https://cdn.iconscout.com/icon/free/png-512/free-klask-3691886-3082362.png?f=webp&w=256' />
             <br />
 {/*
             <h4>

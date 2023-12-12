@@ -3,7 +3,6 @@ import { FC, useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import { Alert, Box, Checkbox, FormControlLabel, Slider, Snackbar, TextField } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2';
-import { Unstable_NumberInput as NumberInput } from '@mui/base/Unstable_NumberInput';
 
 
 interface SetupProps {
@@ -58,7 +57,7 @@ export const Setup: FC<SetupProps> = ({
 
             if (
                 newPlayerName.length == 0
-                || availablePlayers.some(x => x.name.toUpperCase() == newPlayerName.toLocaleLowerCase())
+                || availablePlayers.some(x => x.name.toLowerCase() == newPlayerName.toLowerCase())
             ) {
                 return;
             }
@@ -113,17 +112,6 @@ export const Setup: FC<SetupProps> = ({
                     // , maxWidth: "900px"
                 }}
             >
-                <Slider
-                    value={gameTarget}
-                    onChange={(event, val) => setGameTarget(val as number)}
-                    min={1}
-                    max={100}
-                    step={1}
-                    marks
-                / >
-                    <span>
-                        {gameTarget}
-                    </span>
                 <TextField
                     label="Enter new player name"
                     variant="outlined"
@@ -210,6 +198,23 @@ export const Setup: FC<SetupProps> = ({
             >
                 Start Game
             </Button>
+
+            <h2
+                style={{marginTop: '3em' }}
+            >Add a custom score limit</h2>
+            <Slider
+                    value={gameTarget}
+                    onChange={(event, val) => setGameTarget(val as number)}
+                    min={1}
+                    max={100}
+                    step={1}
+                    marks
+                / >
+                    <h2>
+                        Score Limit: {gameTarget}
+                    </h2>
+
+                    <p>Default Klask Score Limit is 6</p>
             
         </Box>
     );

@@ -147,7 +147,7 @@ export const Play: FC<PlayProps> = ({
                     </Button>
                     <Button
                         disabled={countOne == score || countTwo == score} 
-                        onClick={() => setCountTwo((countOne) => countOne + 1)}>
+                        onClick={() => setCountOne((countOne) => countOne + 1)}>
                                     MAGNET POINTS
                     </Button>
                 </div>
