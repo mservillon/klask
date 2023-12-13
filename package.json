@@ -1,6 +1,7 @@
 {
   "name": "klask",
   "version": "0.1.0",
+  "homepage": "https://mservillon.github.io/klask",
   "private": true,
   "dependencies": {
     "@aws-sdk/util-dynamodb": "^3.461.0",
